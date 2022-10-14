@@ -33,9 +33,9 @@ knl.post('client', async(req, resp) => {
     resp.end();
 }, securityConsts.USER_TYPE_PUBLIC);
 
-knl.get('group', async(req, resp) => {
+knl.get('client', async(req, resp) => {
 
-    const result = await knl.sequelize().models.group.findAll({
+    const result = await knl.sequelize().models.client.findAll({
         where : {
             status: 1
         }
@@ -45,9 +45,9 @@ knl.get('group', async(req, resp) => {
     resp.end();
 }, securityConsts.USER_TYPE_PUBLIC);
 
-knl.get('group/:id', async(req, resp) => {
+knl.get('client/:id', async(req, resp) => {
 
-    const result = await knl.sequelize().models.group.findAll({
+    const result = await knl.sequelize().models.client.findAll({
         where : {
             id : req.params.id
         }
@@ -57,9 +57,9 @@ knl.get('group/:id', async(req, resp) => {
     resp.end();
 }, securityConsts.USER_TYPE_PUBLIC);
 
-knl.put('group/:id', async(req, resp) => {
+knl.put('client/:id', async(req, resp) => {
     
-    const result = await knl.sequelize().models.group.put({
+    const result = await knl.sequelize().models.client.put({
         where : {
             id: req.body.id
         }
@@ -70,9 +70,9 @@ knl.put('group/:id', async(req, resp) => {
     resp.end();
 }, securityConsts.USER_TYPE_PUBLIC)
 
-knl.delete('group/:id', async(req, resp) => {
+knl.delete('client/:id', async(req, resp) => {
 
-    const result = await knl.sequelize().models.group.destroy({
+    const result = await knl.sequelize().models.client.destroy({
         where : {
             id: req.params.id
         }
@@ -83,9 +83,9 @@ knl.delete('group/:id', async(req, resp) => {
     resp.end();
 }, securityConsts.USER_TYPE_PUBLIC)
 
-knl.patch('group/:id', async(req, resp) => {
+knl.patch('client/:id', async(req, resp) => {
 
-    const result = await knl.sequelize().models.group.update({
+    const result = await knl.sequelize().models.client.update({
         status : 0
     },{
         where : {
