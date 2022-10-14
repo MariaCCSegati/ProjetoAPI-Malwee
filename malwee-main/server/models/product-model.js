@@ -1,15 +1,19 @@
 const { Sequelize } = require("sequelize");
 
 module.exports = (sequelize) => {
-    sequelize.define('subgroup', {
+    sequelize.define('product', {
         id : {
             type : Sequelize.INTEGER.UNSIGNED,
             primaryKey : true,
             autoIncrement : true,
-            allowNull : false
+            allowNull : false,
         },
         description : {
             type : Sequelize.STRING(100),
+            allowNull : false,
+        },
+        preco : {
+            type : Sequelize.FLOAT,
             allowNull : false,
         },
         status : {

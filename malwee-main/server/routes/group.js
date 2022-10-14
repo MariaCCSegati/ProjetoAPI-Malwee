@@ -80,7 +80,7 @@ knl.delete('group/:id', async(req, resp) => {
 knl.patch('group/:id', async(req, resp) => {
 
     const result = await knl.sequelize().models.group.update({
-        status : 2
+        status : 0
     },{
         where : {
             id: req.params.id,

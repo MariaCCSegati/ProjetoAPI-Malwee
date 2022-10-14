@@ -3,23 +3,29 @@ const securityConsts = require('../consts/security-consts');
 const md5 = require('../utils/md5-pass');
 const knl = require('../knl');
 
-knl.post('subgroup', async(req, resp) => {
+knl.post('client', async(req, resp) => {
     const schema = Joi.object({
-        description : Joi.string().min(1).max(100).required(),
+        nome : Joi.string().min(1).max(100).required(),
+        CNPJ : Joi.string().min(1).max(14).required(),
+        razaoSocial : Joi.string().min(1).max(100).required(),
+        clienteDesde : Joi.string().min(1).max(14).required()
     })
 
     knl.validate(req.body, schema);
 
-    const result = await knl.sequelize().models.subgroup.findAll({
+    const result = await knl.sequelize().models.client.findAll({
         where : {
-            description : req.body.description
+            nome : req.body.nome
         }
     });
 
     knl.createException('0006', '', !knl.objects.isEmptyArray(result));
 
-    const user = knl.sequelize().models.subgroup.build({
-        description : req.body.description,
+    const user = knl.sequelize().models.client.build({
+        nome : req.body.nome,
+        CNPJ : req.body.CNPJ,
+        razaoSocial : req.body.razaoSocial,
+        clienteDesde : req.body.clienteDesde,
         status   : 1
     });
 
@@ -27,9 +33,9 @@ knl.post('subgroup', async(req, resp) => {
     resp.end();
 }, securityConsts.USER_TYPE_PUBLIC);
 
-knl.get('subgroup', async(req, resp) => {
+knl.get('group', async(req, resp) => {
 
-    const result = await knl.sequelize().models.subgroup.findAll({
+    const result = await knl.sequelize().models.group.findAll({
         where : {
             status: 1
         }
@@ -39,9 +45,9 @@ knl.get('subgroup', async(req, resp) => {
     resp.end();
 }, securityConsts.USER_TYPE_PUBLIC);
 
-knl.get('subgroup/:id', async(req, resp) => {
+knl.get('group/:id', async(req, resp) => {
 
-    const result = await knl.sequelize().models.subgroup.findAll({
+    const result = await knl.sequelize().models.group.findAll({
         where : {
             id : req.params.id
         }
@@ -51,9 +57,9 @@ knl.get('subgroup/:id', async(req, resp) => {
     resp.end();
 }, securityConsts.USER_TYPE_PUBLIC);
 
-knl.put('subgroup/:id', async(req, resp) => {
+knl.put('group/:id', async(req, resp) => {
     
-    const result = await knl.sequelize().models.subgroup.put({
+    const result = await knl.sequelize().models.group.put({
         where : {
             id: req.body.id
         }
@@ -64,9 +70,9 @@ knl.put('subgroup/:id', async(req, resp) => {
     resp.end();
 }, securityConsts.USER_TYPE_PUBLIC)
 
-knl.delete('subgroup/:id', async(req, resp) => {
+knl.delete('group/:id', async(req, resp) => {
 
-    const result = await knl.sequelize().models.subgroup.destroy({
+    const result = await knl.sequelize().models.group.destroy({
         where : {
             id: req.params.id
         }
@@ -77,9 +83,9 @@ knl.delete('subgroup/:id', async(req, resp) => {
     resp.end();
 }, securityConsts.USER_TYPE_PUBLIC)
 
-knl.patch('subgroup/:id', async(req, resp) => {
+knl.patch('group/:id', async(req, resp) => {
 
-    const result = await knl.sequelize().models.subgroup.update({
+    const result = await knl.sequelize().models.group.update({
         status : 0
     },{
         where : {
