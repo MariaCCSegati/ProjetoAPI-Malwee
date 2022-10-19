@@ -1,5 +1,4 @@
 const Joi = require('joi');
-const securityConsts = require('../consts/security-consts');
 const md5 = require('../utils/md5-pass');
 const knl = require('../knl');
 
@@ -31,4 +30,4 @@ knl.post('user', async(req, resp) => {
 
     await user.save();
     resp.end();
-}, securityConsts.USER_TYPE_PUBLIC);
+})

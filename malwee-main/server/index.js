@@ -8,7 +8,7 @@ require('./starters/start-middlewares');
 require('./starters/start-sync-db');
 require('./routes');
 
-let port = 3012;
+let port = 3000;
 
 if (process.env.PORT){
     port = process.env.PORT;

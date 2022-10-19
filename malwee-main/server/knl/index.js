@@ -9,7 +9,6 @@ exports.uuid      = uuid.gen;
 exports.get       = container.get;
 exports.post      = container.post;
 exports.put       = container.put;
-exports.patch     = container.patch;
 exports.delete    = container.delete;
 exports.objects   = objects;
 exports.createException       = exception.createException;
