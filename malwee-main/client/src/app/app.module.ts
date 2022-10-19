@@ -15,6 +15,7 @@ import { DashComponent } from './dash/dash.component';
 import { RoutesModule } from './routes.module';
 import { GroupComponent } from './group/group.component';
 import { UserComponent } from './user/user.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { UserComponent } from './user/user.component';
     FormsModule,
     BlockUIModule.forRoot(),
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
   ],
   exports : [
     RouterModule

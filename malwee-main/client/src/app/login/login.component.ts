@@ -12,13 +12,13 @@ export class LoginComponent implements OnInit {
   password : string = '';
   hide : boolean = true;
 
-  constructor(private router : HttpClient, private router : Router) { }
+  constructor(private httpclient : HttpClient, private router : Router) { }
 
   ngOnInit(): void {
   }
 
   login(){
-    this.http.post('http://localhost:3012/',{ username: this.username, password: this.password}).toPromise().then((response : any) => {
+    this.httpclient.post('http://localhost:3012/',{ username: this.username, password: this.password}).toPromise().then((response : any) => {
       console.log(response.token);
       if(response.token != null){
         window.localStorage.setItem('token', response.token);
