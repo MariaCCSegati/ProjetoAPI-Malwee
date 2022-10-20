@@ -95,4 +95,4 @@ knl.patch('client/:id', async(req, resp) => {
 
     resp.json(result)
     resp.end();
-}, securityConsts.USER_TYPE_PUBLIC)
+})

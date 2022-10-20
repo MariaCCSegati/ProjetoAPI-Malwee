@@ -116,6 +116,15 @@ exports.post = (path, fn, userTypes) => {
     })
 }
 
+exports.patch = (path, fn, userTypes) => {
+    path = route(path);
+    console.log('Register route: PATCH:' + path);
+
+    knl.express.patch(path, (req, resp) => {
+        container(req, resp, fn, userTypes);
+    })
+}
+
 exports.put = (path, fn, userTypes) => {
     path = route(path);
     console.log('Register route: PUT:' + path);
@@ -130,15 +139,6 @@ exports.delete = (path, fn, userTypes) => {
     console.log('Register route: DELETE:' + path);
 
     knl.express.delete(path, (req, resp) => {
-        container(req, resp, fn, userTypes);
-    })
-}
-
-exports.patch = (path, fn, userTypes) => {
-    path = route(path);
-    console.log('Register route: PATCH:' + path);
-
-    knl.express.patch(path, (req, resp) => {
         container(req, resp, fn, userTypes);
     })
 }
