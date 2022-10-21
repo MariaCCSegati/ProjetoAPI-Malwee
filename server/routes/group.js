@@ -3,14 +3,14 @@ const securityConsts = require('../consts/security-consts');
 const md5 = require('../utils/md5-pass');
 const knl = require('../knl');
 
-knl.post('group', async(req, resp) => {
+knl.post('grupo', async(req, resp) => {
     const schema = Joi.object({
         description : Joi.string().min(1).max(100).required(),
     })
 
     knl.validate(req.body, schema);
 
-    const result = await knl.sequelize().models.group.findAll({
+    const result = await knl.sequelize().models.grupo.findAll({
         where : {
             description : req.body.description
         }
@@ -18,7 +18,7 @@ knl.post('group', async(req, resp) => {
 
     knl.createException('0006', '', !knl.objects.isEmptyArray(result));
 
-    const user = knl.sequelize().models.group.build({
+    const user = knl.sequelize().models.grupo.build({
         description : req.body.description,
         status   : 1
     });
@@ -27,9 +27,9 @@ knl.post('group', async(req, resp) => {
     resp.end();
 }, securityConsts.USER_TYPE_PUBLIC);
 
-knl.get('group', async(req, resp) => {
+knl.get('grupo', async(req, resp) => {
 
-    const result = await knl.sequelize().models.group.findAll({
+    const result = await knl.sequelize().models.grupo.findAll({
         where : {
             status: 1
         }
@@ -39,9 +39,9 @@ knl.get('group', async(req, resp) => {
     resp.end();
 }, securityConsts.USER_TYPE_PUBLIC);
 
-knl.get('group/:id', async(req, resp) => {
+knl.get('grupo/:id', async(req, resp) => {
 
-    const result = await knl.sequelize().models.group.findAll({
+    const result = await knl.sequelize().models.grupo.findAll({
         where : {
             id : req.params.id
         }
@@ -51,9 +51,9 @@ knl.get('group/:id', async(req, resp) => {
     resp.end();
 }, securityConsts.USER_TYPE_PUBLIC);
 
-knl.put('group/:id', async(req, resp) => {
+knl.put('grupo/:id', async(req, resp) => {
     
-    const result = await knl.sequelize().models.group.put({
+    const result = await knl.sequelize().models.grupo.put({
         where : {
             id: req.body.id
         }
@@ -64,9 +64,9 @@ knl.put('group/:id', async(req, resp) => {
     resp.end();
 }, securityConsts.USER_TYPE_PUBLIC)
 
-knl.delete('group/:id', async(req, resp) => {
+knl.delete('grupo/:id', async(req, resp) => {
 
-    const result = await knl.sequelize().models.group.destroy({
+    const result = await knl.sequelize().models.grupo.destroy({
         where : {
             id: req.params.id
         }
@@ -77,9 +77,9 @@ knl.delete('group/:id', async(req, resp) => {
     resp.end();
 }, securityConsts.USER_TYPE_PUBLIC)
 
-knl.patch('group/:id', async(req, resp) => {
+knl.patch('grupo/:id', async(req, resp) => {
 
-    const result = await knl.sequelize().models.group.update({
+    const result = await knl.sequelize().models.grupo.update({
         status : 0
     },{
         where : {
