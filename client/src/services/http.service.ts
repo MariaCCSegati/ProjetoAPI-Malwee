@@ -30,7 +30,6 @@ export class HttpService{
     return this.httpClient.post(this.baseUrl + route, obj, this.makeHttpOptions()).toPromise();
   }
 
-
   public patch(route : string, obj : any) : Promise<any>{
     return this.httpClient.patch(this.baseUrl + route, obj, this.makeHttpOptions()).toPromise();
   }  
