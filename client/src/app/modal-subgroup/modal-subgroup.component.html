@@ -1,0 +1,35 @@
+<mat-tab-group id="modal">
+    <mat-tab label="Inserir">
+        <mat-form-field class="example-full-width" appearance="fill" >
+            <mat-label>Insira um subgrupo</mat-label>
+           <input matInput placeholder="Ex. Calça" class="inputzin" [(ngModel)]="description">
+          </mat-form-field>
+          <button mat-raised-button (click)="insert()"><mat-icon>add_circle_outline</mat-icon></button>
+    </mat-tab>
+
+    <mat-tab label="Excluir">
+        <mat-form-field class="example-full-width" appearance="fill" >
+            <mat-label>Insira o ID de subgrupo</mat-label>
+            <input matInput placeholder="Ex. 1" class="inputzin" [(ngModel)]="id">
+           </mat-form-field>
+           <button mat-raised-button (click)="delete()"><mat-icon>delete</mat-icon></button>
+    </mat-tab>
+
+    <mat-tab label="Editar">
+        <mat-form-field class="example-full-width" appearance="fill" >
+            <mat-label>Insira o ID de subgrupo</mat-label>
+            <input matInput placeholder="Ex. 1" class="inputzin" [(ngModel)]="id">
+        </mat-form-field>
+        <button mat-raised-button (click)="htmlAdd()"><mat-icon>done_outline</mat-icon></button>
+        <div *ngIf="html == 'true'">
+            <mat-form-field  class="example-full-width" appearance="fill" >
+                <mat-label>Insira a nova descrição</mat-label>
+                <input matInput placeholder="Ex. Meia" class="inputzin" [(ngModel)]="description">
+            </mat-form-field>   
+               <button mat-raised-button (click)="edit()"><mat-icon>edit</mat-icon></button>
+            </div>
+    </mat-tab>
+  </mat-tab-group>
+
+
+  <button mat-raised-button id="botao" (click)="cancel()">Sair</button>

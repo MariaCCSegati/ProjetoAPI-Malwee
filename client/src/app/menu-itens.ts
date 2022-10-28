@@ -1,4 +1,5 @@
 import { GroupComponent } from "./group/group.component";
+import { SubgroupComponent } from "./subgroup/subgroup.component";
 import { UserComponent } from "./user/user.component";
 
 export const MenuItens = [
@@ -7,6 +8,18 @@ export const MenuItens = [
         caption : 'Grupo',
         icon : 'assessment',
         component: GroupComponent,
+    },
+    {
+        path: 'subgroup',
+        caption : 'Subgrupo',
+        icon : 'assessment',
+        component: SubgroupComponent,
+    },
+    {
+        path: 'collection',
+        caption : 'Coleção',
+        icon : 'assessment',
+        component: SubgroupComponent,
     },
     {
         path: 'user',

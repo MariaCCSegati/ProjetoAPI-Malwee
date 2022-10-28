@@ -2,16 +2,17 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from 'src/services/http.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { ModalComponent } from '../modal/modal.component';
+import { ModalCollectionComponent } from '../modal-collection/modal-collection.component';
 
 @Component({
-  selector: 'app-group',
-  templateUrl: './group.component.html',
-  styleUrls: ['./group.component.scss']
+  selector: 'app-collection',
+  templateUrl: './collection.component.html',
+  styleUrls: ['./collection.component.scss']
 })
-export class GroupComponent implements OnInit {
+export class CollectionComponent implements OnInit {
+
   description:string = '';
-  group:Array<any> = []
+  collection:Array<any> = []
   grupinho:string = '';
   modal: string = '';
   html:string = '';
@@ -31,9 +32,9 @@ export class GroupComponent implements OnInit {
 
 
   openDialog(){
-    const dialogRef = this.dialog.open(ModalComponent, {
+    const dialogRef = this.dialog.open(ModalCollectionComponent, {
       width: '550px',
-      data: {idGrupo : this.id, description: this.description}
+      data: {id : this.id, description: this.description}
     });
    
 
@@ -45,13 +46,12 @@ export class GroupComponent implements OnInit {
 
 
   teste(){
-    this.group.push({description : this.description})
-    console.log(this.group)
+    this.collection.push({description : this.description})
+    console.log(this.collection)
   }
 
   async list(){
-    this.group = await this.httpService.get('grupo');
-    console.log(this.group)
+    this.collection = await this.httpService.get('collection');
+    console.log(this.collection)
   }
-
 }

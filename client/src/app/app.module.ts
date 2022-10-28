@@ -17,6 +17,11 @@ import { GroupComponent } from './group/group.component';
 import { UserComponent } from './user/user.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ModalComponent } from './modal/modal.component';
+import { SubgroupComponent } from './subgroup/subgroup.component';
+import { ModalSubgroupComponent } from './modal-subgroup/modal-subgroup.component';
+import { CollectionComponent } from './collection/collection.component';
+import { ModalCollectionComponent } from './modal-collection/modal-collection.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +32,12 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     MenuComponent,
     DashComponent,
     GroupComponent,
-    UserComponent
+    UserComponent,
+    ModalComponent,
+    SubgroupComponent,
+    ModalSubgroupComponent,
+    CollectionComponent,
+    ModalCollectionComponent
   ],
   imports: [
     RoutesModule,

@@ -5,6 +5,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class HttpService{
+  update(arg0: string, arg1: { description: string; }): any[] | PromiseLike<any[]> {
+    throw new Error('Method not implemented.');
+  }
 
   private readonly baseUrl = 'http://localhost:3012/'
 

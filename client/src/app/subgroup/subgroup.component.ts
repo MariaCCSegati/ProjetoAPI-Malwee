@@ -2,16 +2,17 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from 'src/services/http.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { ModalComponent } from '../modal/modal.component';
+import { ModalSubgroupComponent } from '../modal-subgroup/modal-subgroup.component';
 
 @Component({
-  selector: 'app-group',
-  templateUrl: './group.component.html',
-  styleUrls: ['./group.component.scss']
+  selector: 'app-subgroup',
+  templateUrl: './subgroup.component.html',
+  styleUrls: ['./subgroup.component.scss']
 })
-export class GroupComponent implements OnInit {
+export class SubgroupComponent implements OnInit {
+
   description:string = '';
-  group:Array<any> = []
+  subgroup:Array<any> = []
   grupinho:string = '';
   modal: string = '';
   html:string = '';
@@ -31,7 +32,7 @@ export class GroupComponent implements OnInit {
 
 
   openDialog(){
-    const dialogRef = this.dialog.open(ModalComponent, {
+    const dialogRef = this.dialog.open(ModalSubgroupComponent, {
       width: '550px',
       data: {idGrupo : this.id, description: this.description}
     });
@@ -45,13 +46,15 @@ export class GroupComponent implements OnInit {
 
 
   teste(){
-    this.group.push({description : this.description})
-    console.log(this.group)
+    this.subgroup.push({description : this.description})
+    console.log(this.subgroup)
   }
 
   async list(){
-    this.group = await this.httpService.get('grupo');
-    console.log(this.group)
+    this.subgroup = await this.httpService.get('subgroup');
+    console.log(this.subgroup)
   }
 
 }
+
+
