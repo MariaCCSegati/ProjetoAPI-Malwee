@@ -51,18 +51,19 @@ knl.get('subgroup/:id', async(req, resp) => {
     resp.end();
 }, securityConsts.USER_TYPE_PUBLIC);
 
-knl.put('subgroup/:id', async(req, resp) => {
+knl.put('subgroup', async(req, resp) => {
     
-    const result = await knl.sequelize().models.subgroup.put({
-        where : {
+    const result = await knl.sequelize().models.subgroup.update({
+        description : req.body.description,
+       },{
+          where : {
             id: req.body.id
         }
     });
 
-    resp.send(result);
-    console.log(result);
+    resp.json(result);
     resp.end();
-}, securityConsts.USER_TYPE_PUBLIC)
+})
 
 knl.delete('subgroup/:id', async(req, resp) => {
 

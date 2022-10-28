@@ -51,18 +51,21 @@ knl.get('grupo/:id', async(req, resp) => {
     resp.end();
 }, securityConsts.USER_TYPE_PUBLIC);
 
-knl.put('grupo/:id', async(req, resp) => {
+knl.put('grupo', async(req, resp) => {
     
-    const result = await knl.sequelize().models.grupo.put({
+    const result = await knl.sequelize().models.grupo.update({
+        description : req.body.description,
+    },{
         where : {
             id: req.body.id
         }
-    });
+    }
+        
+    );
 
-    resp.send(result);
-    console.log(result);
+    resp.json(result);
     resp.end();
-}, securityConsts.USER_TYPE_PUBLIC)
+})
 
 knl.delete('grupo/:id', async(req, resp) => {
 

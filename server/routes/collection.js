@@ -51,18 +51,19 @@ knl.get('collection/:id', async(req, resp) => {
     resp.end();
 }, securityConsts.USER_TYPE_PUBLIC);
 
-knl.put('collection/:id', async(req, resp) => {
+knl.put('collection', async(req, resp) => {
     
     const result = await knl.sequelize().models.collection.put({
+            description : req.body.description,
+        },{
         where : {
             id: req.body.id
         }
     });
 
-    resp.send(result);
-    console.log(result);
+    resp.json(result);
     resp.end();
-}, securityConsts.USER_TYPE_PUBLIC)
+})
 
 knl.delete('collection/:id', async(req, resp) => {
 
