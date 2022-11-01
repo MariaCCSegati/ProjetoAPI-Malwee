@@ -1,3 +1,4 @@
+import { CollectionComponent } from "./collection/collection.component";
 import { GroupComponent } from "./group/group.component";
 import { SubgroupComponent } from "./subgroup/subgroup.component";
 import { UserComponent } from "./user/user.component";
@@ -19,7 +20,7 @@ export const MenuItens = [
         path: 'collection',
         caption : 'Coleção',
         icon : 'assessment',
-        component: SubgroupComponent,
+        component: CollectionComponent,
     },
     {
         path: 'user',
