@@ -15,6 +15,10 @@ module.exports = (sequelize) => {
         status : {
             type : Sequelize.INTEGER,
             allowNull : false,
+        },
+        fkGroup:{
+            type:Sequelize.INTEGER,
+            allowNull:false
         }
     })
 }

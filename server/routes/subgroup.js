@@ -6,13 +6,15 @@ const knl = require('../knl');
 knl.post('subgroup', async(req, resp) => {
     const schema = Joi.object({
         description : Joi.string().min(1).max(100).required(),
+        fkGroup: Joi.number().min(1).required(),
     })
 
     knl.validate(req.body, schema);
 
     const result = await knl.sequelize().models.subgroup.findAll({
         where : {
-            description : req.body.description
+            description : req.body.description,
+            fkGroup: req.body.fkGroup
         }
     });
 
@@ -20,6 +22,7 @@ knl.post('subgroup', async(req, resp) => {
 
     const user = knl.sequelize().models.subgroup.build({
         description : req.body.description,
+        fkGroup: req.body.fkGroup,
         status   : 1
     });
 

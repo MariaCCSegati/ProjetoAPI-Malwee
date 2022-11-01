@@ -53,7 +53,7 @@ knl.get('collection/:id', async(req, resp) => {
 
 knl.put('collection', async(req, resp) => {
     
-    const result = await knl.sequelize().models.collection.put({
+    const result = await knl.sequelize().models.collection.update({
             description : req.body.description,
         },{
         where : {
